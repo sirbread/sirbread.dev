@@ -16,9 +16,44 @@
     <script src="clock.js" defer></script>
     <script src="startMenu.js" defer></script>
 
+    <script>
+        function loadFullscreenPage() {
+            document.body.innerHTML = `
+                <style>
+                    body {
+                        margin: 0;
+                        background-color: black;
+                        overflow: hidden;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        height: 100vh;
+                        width: 100vw;
+                    }
+                    img {
+                        width: 100vw;
+                        height: 100vh;
+                        object-fit: cover;
+                        display: block;
+                    }
+                </style>
+                <img src="safepage/safe2.png" alt="Safe Image">
+            `;
+
+            let elem = document.documentElement;
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.mozRequestFullScreen) {
+                elem.mozRequestFullScreen();
+            } else if (elem.webkitRequestFullscreen) {
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) {
+                elem.msRequestFullscreen();
+            }
+        }
 
 
-
+    </script>
 </head>
 
 <body>
@@ -109,14 +144,9 @@
                         icons will direct you to more pages to explore, and 
                         the start button reveals the same links.</p>
                 </div>
-                <!-- <button class="continue-button" onclick="openModal('fifthModal')">continue</button> -->
             </div>
         </div>
     </div>
-
-
-
-
 
     <div class="itemIconContainer">
         <div class="itemIcon">
@@ -125,17 +155,14 @@
             </a>
         </div>
 
-
         <div class="itemIcon">
-            <a href="projectspage/index.html">
+            <a href="projectspage/projects.html">
                 <img src="desktopimg/projectsicon.png" title="Projects">
             </a>
         </div>
 
-
-
         <div class="itemIcon">
-            <a href="contactpage/index.html">
+            <a href="contactpage/contact.html">
                 <img src="desktopimg/contacticon.png" title="Contact">
             </a>
         </div>
@@ -147,7 +174,6 @@
         </div>
     </div>
 
-
     <div class="navbar">
         <button id="start-button" onclick="toggleStartMenu()">
             <img src="desktopimg/start.png" alt="Start Icon" style="width:25px; padding-right:3px;">
@@ -155,14 +181,14 @@
         </button>
         <div id="clock">00:00 AM</div>
     </div>
+
     <div class="start-menu" id="startMenu">
-        <a href="projectspage/index.html"><img src="desktopimg/projectsstart.png" alt="Image 2"></a>
-        <a href="contactpage/index.html"><img src="desktopimg/contactstart.png" alt="Image 4"></a>
-        <a href="safepage/index.html"><img src="desktopimg/shut.png" alt="Image 1"></a>
+        <a href="projectspage/projects.html"><img src="desktopimg/projectsstart.png" alt="Image 2"></a>
+        <a href="contactpage/contact.html"><img src="desktopimg/contactstart.png" alt="Image 4"></a>
+        <a href="#" onclick="loadFullscreenPage()"><img src="desktopimg/shut.png" alt="Image 1"></a>
     </div>
+
     <div class="fgbg"></div>
-
-
 
 </body>
 
