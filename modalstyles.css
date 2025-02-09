@@ -1,0 +1,188 @@
+@font-face {
+    font-family: 'w95';
+    /* The name you want to give to the font */
+    src: url('w95fa.woff2') format('woff2'),
+        /* Font formats for cross-browser support */
+        url('w95fa.woff') format('woff');
+
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;        
+    /* border: 1px solid red; */
+}
+
+
+
+.modal-content {
+
+    position: absolute;
+    background-color: #fff;
+    border-left: 2px solid #FFFFFF;
+    border-right: 2px solid #808080;
+    border-top: 2px solid #FFFFFF;
+    border-bottom: 2px solid #808080;
+    box-shadow: -2px 0px 0px 0px #dfdfdf, 2px 0px 0px 0px black, 0px 2px 0px 0px black, 0px -2px 0px 0px #dfdfdf;
+    z-index: 10;
+    background-color: #c0c0c0;
+    width: 500px;
+    max-width: 80%;
+    overflow: hidden;
+    font-family: 'w95';
+
+}
+
+/* Header Styles */
+.modal-header {
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000080;
+    border: 2px solid #c0c0c0;
+    color: #FFFFFF;
+}
+
+/* Header Text Styles */
+.modal-header-text {
+    font-family: 'w95';
+    font-size: 1.25rem;
+
+}
+
+/* Close Button Styles */
+.close {
+    cursor: pointer;
+    padding-right: 3px;
+    padding-left: 3px;
+    border-left: 2px solid #FFFFFF;
+    border-right: 2px solid #808080;
+    border-top: 2px solid #FFFFFF;
+    border-bottom: 2px solid #808080;
+    box-shadow: -2px 0px 0px 0px #dfdfdf, 2px 0px 0px 0px black, 0px 2px 0px 0px black, 0px -2px 0px 0px #dfdfdf;
+    z-index: 10;
+    background-color: #c0c0c0;
+    font-family: 'w95';
+    color: black;
+}
+
+/* Close Button Container Styles */
+.close-container {
+    flex: 0;
+}
+
+/* Body Styles */
+.modal-body {
+    padding: 10px;
+}
+
+/* Media Container Styles */
+.media-container {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+
+}
+
+/* Media Styles (Image) */
+.media {
+    max-width: 100%;
+    max-height: 150px;
+    margin-right: 0px;
+    width: 60px;
+
+}
+
+img {
+    max-width: 100%;
+}
+
+.profile-pic {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border: 2px solid black;
+}
+
+.modal-body-text {
+    padding-left: 20px;
+    font-size: 1.25rem;
+}
+
+
+
+/* Continue Button Styles */
+.continue-button {
+    display: block;
+    margin-top: 20px;
+    cursor: pointer;
+    border-left: 2px solid #FFFFFF;
+    border-right: 2px solid #808080;
+    border-top: 2px solid #FFFFFF;
+    border-bottom: 2px solid #808080;
+    box-shadow: -2px 0px 0px 0px #dfdfdf, 2px 0px 0px 0px black, 0px 2px 0px 0px black, 0px -2px 0px 0px #dfdfdf;
+    z-index: 10;
+    background-color: #c0c0c0;
+    outline: 2px dashed black;
+    outline-offset: -5px;
+    font-family: 'w95';
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* Left Modal Styles */
+#firstModal .modal-content {
+    top: 20%;
+    left: 40%;
+    transform: translateX(-50%);
+}
+
+/* Right Modal Styles */
+#secondModal .modal-content {
+    top: 10%;
+    right: 30%;
+    /* width: 18%;
+    height: 55%; */
+    width: 250px;
+    height: 400px;
+    transform: translateX(50%);
+}
+
+#thirdModal .modal-content {
+    top: 5%;
+    left: 25%;
+    width: 20%;
+    height: 60%;
+    min-width: 280px;
+    transform: translateX(50%);
+}
+
+#fourthModal .modal-content {
+    top: 10%;
+    left: 15%;
+    width: 30%;
+    height: 20%;
+    min-width: 380px;
+    transform: translateX(50%);
+}
+
+#secondModal .continue-button {
+    margin-left: 30%;
+}
+
+#firstModal .continue-button {
+    margin-left: 42%;
+}
+
+#thirdModal .continue-button {
+    margin-left: 38%;
+    margin-top: 10%;
+}
+
+#fourthModal .continue-button {
+    margin-left: 40%;
+}

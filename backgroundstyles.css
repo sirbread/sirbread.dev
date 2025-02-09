@@ -1,0 +1,45 @@
+
+ body {
+    margin: 0;
+    padding: 0;
+    background-image: url('desktopimg/desktop95.jpg'); 
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-color: teal;
+    font-family: Arial, sans-serif;
+}
+
+#overlay-black{
+    position: absolute;
+    top: 0; left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index:9999999;
+    background-color:black;
+    animation-name:fadeIn;
+    animation-duration:1.5s;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
+    }
+}
+
+.fgbg {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0%;
+    background-image: url(desktopimg/bg.png);
+    background-blend-mode: multiply;
+    z-index: 9999;
+    pointer-events: none;
+    
+}

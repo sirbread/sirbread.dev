@@ -1,0 +1,83 @@
+@font-face {
+    font-family: 'w95'; /* The name you want to give to the font */
+    src: url('font/w95fa.woff2') format('woff2'), /* Font formats for cross-browser support */
+         url('font/w95fa.woff') format('woff');
+    
+    font-weight: normal;
+    font-style: normal;
+}
+
+.navbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 45px;
+    border-left: 4px solid #FFFFFF;
+    border-right: 4px solid #FFFFFF;
+    border-top: 4px solid #FFFFFF;
+    border-bottom: 4px solid black;
+    background-color: #c0c0c0;
+    font-family: 'w95';
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 11;
+}
+
+  button {
+
+    border-left: 2px solid #FFFFFF;
+    border-right: 2px solid black;
+    border-top: 2px solid #FFFFFF;
+    border-bottom: 2px solid black;
+    background-color: #c0c0c0;
+    font-family: 'w95';
+    color: black;
+    padding: 5px;
+    margin-left: 5px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-size: 1.1rem;
+
+  }
+
+  #clock {
+    margin-right: 10px;
+    font-size: 20px;
+    padding: 3px;
+    border-left: 2px solid #7f7f7f;
+    border-right: 2px solid white;
+    border-top: 2px solid #7f7f7f;
+    border-bottom: 2px solid white;
+    background-color: #c0c0c0;    }
+
+  .start-menu {
+      display: none;
+      position: fixed;
+      bottom: 52px;
+      border-left: 2px solid #FFFFFF;
+      border-right: 2px solid #808080;
+      border-top: 2px solid #FFFFFF;
+      border-bottom: 2px solid #808080;
+      box-shadow: -2px 0px 0px 0px #dfdfdf, 2px 0px 0px 0px black, 0px 0px 0px 0px black, 0px -2px 0px 0px #dfdfdf;
+      left: 2px;
+      background-color: #c0c0c0;
+      width: 12%;
+      min-width: 110px;
+      border: 1px solid #666;
+      z-index: 12;
+  }
+
+  .start-menu a {
+      display: block;
+      color: #fff;
+      text-decoration: none;
+  }
+
+  .start-menu a:hover {
+      background-color: #000080;
+  }

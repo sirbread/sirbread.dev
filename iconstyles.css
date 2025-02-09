@@ -1,0 +1,42 @@
+.itemIconContainer {
+    position: absolute;
+    /* bottom: 0; */
+    display: flex;
+    z-index: 9;
+    width: 160px;
+    flex-wrap: wrap;
+}
+.itemIcon {
+    display: flex;
+    height: 88px;
+    width: 60px;
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+
+.trashIconContainer {
+    position: absolute;
+    right: 0;
+    /* bottom: 0; */
+    display: flex;
+    z-index: 9;
+    margin-right: 30px;
+
+    width: 80px;
+    flex-wrap: wrap;
+}
+.trashIcon {
+    display: flex;
+    height: 88px;
+    width: 60px;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.itemIcon :hover {
+    background-color: #6db2b1;
+}
+
+.trashIcon :hover {
+    background-color: #6db2b1;
+}
