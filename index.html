@@ -579,7 +579,7 @@
             <img src="desktopimg/projectsicon.png" title="Projects">
         </div>
 
-        <div class="itemIcon" ondblclick="event.preventDefault(); window.location.href='contactpage/index.html'">
+        <div class="itemIcon" ondblclick="event.preventDefault(); openModal('contactModal')">
             <img src="desktopimg/contacticon.png" title="Contact">
         </div>
     </div>
@@ -598,8 +598,27 @@
 
     <div class="start-menu" id="startMenu">
         <a href="#" onclick="openProjectsExplorer()"><img src="desktopimg/projectsstart.png" alt="Image 2"></a>
-        <a href="contactpage/index.html"><img src="desktopimg/contactstart.png" alt="Image 4"></a>
+        <a href="#" onclick="openModal('contactModal')"><img src="desktopimg/contactstart.png" alt="Image 4"></a>
         <a href="#" onclick="loadFullscreenPage()"><img src="desktopimg/shut.png" alt="Image 1"></a>
+    </div>
+    <!-- Contact Modal (draggable) -->
+    <div id="contactModal" class="modal" style="display:none;">
+        <div id="contactModaldrag" class="modal-content" style="width: 350px; min-width: 300px; background-color: #c0c0c0; font-family: 'w95', Arial, sans-serif; position: absolute; left: 120px; top: 120px;">
+            <div class="modal-header" id="contactModaldragheader" style="background-color: #000080; color: #fff; border: 2px solid #c0c0c0;">
+                <div class="modal-header-text">Contact</div>
+                <div class="close-container">
+                    <span class="close" onclick="closeModal('contactModal')">x</span>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="content" style="display: flex; flex-direction: column; align-items: center; margin-top: 20px;">
+                    <div class="text-div" style="width: 80%; padding: 10px; border-left: 2px solid #fff; border-right: 2px solid #808080; border-top: 2px solid #fff; border-bottom: 2px solid #808080; margin-bottom: 10px; background: #e0e0e0;">Email: <a href="mailto:sirbread.dev@outlook.com">sirbread.dev@outlook.com</a></div>
+                    <div class="text-div" style="width: 80%; padding: 10px; border-left: 2px solid #fff; border-right: 2px solid #808080; border-top: 2px solid #fff; border-bottom: 2px solid #808080; margin-bottom: 10px; background: #e0e0e0;">Discord: @sirbread_1</div>
+                    <div class="text-div" style="width: 80%; padding: 10px; border-left: 2px solid #fff; border-right: 2px solid #808080; border-top: 2px solid #fff; border-bottom: 2px solid #808080; margin-bottom: 10px; background: #e0e0e0;">Github: <a href="https://github.com/sirbread" target="_blank">@sirbread</a></div>
+                    <div class="text-div" style="width: 80%; padding: 10px; border-left: 2px solid #fff; border-right: 2px solid #808080; border-top: 2px solid #fff; border-bottom: 2px solid #808080; margin-bottom: 10px; background: #e0e0e0;">X (or blue bird thing): <a href="https://x.com/sirbread_1" target="_blank">@sirbread_1</a></div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="fgbg"></div>

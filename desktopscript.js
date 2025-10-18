@@ -1,3 +1,34 @@
+// Make modals draggable (including contact modal)
+function dragElement(elmnt, dragHandle) {
+    let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    dragHandle = dragHandle || elmnt;
+    dragHandle.onmousedown = dragMouseDown;
+    function dragMouseDown(e) {
+        e = e || window.event;
+        e.preventDefault();
+        // get the mouse cursor position at startup:
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        document.onmouseup = closeDragElement;
+        document.onmousemove = elementDrag;
+    }
+    function elementDrag(e) {
+        e = e || window.event;
+        e.preventDefault();
+        // calculate the new cursor position:
+        pos1 = pos3 - e.clientX;
+        pos2 = pos4 - e.clientY;
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        // set the element's new position:
+        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+    }
+    function closeDragElement() {
+        document.onmouseup = null;
+        document.onmousemove = null;
+    }
+}
 // setTimeout(showwelcomeDiv, 3000);
 // document.getElementById("image-button").addEventListener("click", showpfpDiv);                
 
@@ -75,6 +106,12 @@ function makeDraggable(icon) {
 }
 
 window.addEventListener('DOMContentLoaded', function() {
+    // Make contact modal draggable
+    const contactModal = document.getElementById('contactModaldrag');
+    const contactHeader = document.getElementById('contactModaldragheader');
+    if (contactModal && contactHeader) {
+        dragElement(contactModal, contactHeader);
+    }
     // Set initial grid positions for icons, aligned to grid
     const icons = Array.from(document.querySelectorAll('.itemIcon'));
     icons.forEach((icon, i) => {
