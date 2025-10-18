@@ -69,18 +69,17 @@ document.addEventListener('DOMContentLoaded', updateTaskbar);
         document.addEventListener('DOMContentLoaded', function() {
       document.querySelectorAll('.close').forEach(function(closeBtn) {
         closeBtn.addEventListener('click', function() {
-          // Always hide the parent .modal container
+          // Hide the parent .modal if present, otherwise hide the .modal-content itself
           var modal = this.closest('.modal');
-          if (!modal) {
-            // If not found, try to find the closest .modal-content and then its parent .modal
-            var modalContent = this.closest('.modal-content');
-            if (modalContent && modalContent.parentElement.classList.contains('modal')) {
-              modal = modalContent.parentElement;
-            }
-          }
           if (modal) {
             modal.style.display = 'none';
             updateTaskbar();
+          } else {
+            var modalContent = this.closest('.modal-content');
+            if (modalContent) {
+              modalContent.style.display = 'none';
+              updateTaskbar();
+            }
           }
         });
       });
