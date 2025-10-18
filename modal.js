@@ -6,14 +6,60 @@
             }, 3000);
 
         function openModal(modalId) {
-            document.getElementById(modalId).style.display = "block";
-
+          var modal = document.getElementById(modalId);
+          if (modal) {
+            modal.style.display = "block";
+            modal.style.zIndex = getMaxZ() + 1;
+            updateTaskbar();
+          }
         }
 
         // Function to close a modal
         function closeModal(modalId) {
-            document.getElementById(modalId).style.display = "none";
+          var modal = document.getElementById(modalId);
+          if (modal) {
+            modal.style.display = "none";
+            updateTaskbar();
+          }
         }
+// Helper to get max z-index for stacking windows
+function getMaxZ() {
+  let maxZ = 10;
+  document.querySelectorAll('.modal').forEach(function(m) {
+    const z = parseInt(window.getComputedStyle(m).zIndex) || 10;
+    if (m.style.display === 'block' && z > maxZ) maxZ = z;
+  });
+  return maxZ;
+}
+
+// Taskbar logic
+function updateTaskbar() {
+  const taskbar = document.getElementById('taskbar');
+  if (!taskbar) return;
+  // List all open modals
+  const openModals = Array.from(document.querySelectorAll('.modal')).filter(m => m.style.display === 'block');
+  taskbar.innerHTML = '';
+  openModals.forEach(modal => {
+    // Get window title
+    let title = '';
+    const headerText = modal.querySelector('.modal-header-text');
+    if (headerText) title = headerText.textContent.trim();
+    else title = modal.id;
+    // Create button
+    const btn = document.createElement('button');
+    btn.textContent = title;
+    btn.className = 'taskbar-btn';
+    btn.onclick = function() {
+      // Bring window to front
+      modal.style.zIndex = getMaxZ() + 1;
+      modal.focus();
+    };
+    taskbar.appendChild(btn);
+  });
+}
+
+// Update taskbar on load and when modals change
+document.addEventListener('DOMContentLoaded', updateTaskbar);
 
         document.addEventListener('DOMContentLoaded', function() {
             document.querySelectorAll('.close').forEach(function(closeBtn) {

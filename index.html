@@ -588,15 +588,84 @@
         <img src="desktopimg/recyclebin.png" title="Recycle Bin" alt="Recycle Bin">
     </div>
 
-    <div class="navbar">
-        <button id="start-button" onclick="toggleStartMenu()">
-            <img src="desktopimg/start.png" alt="Start Icon" style="width:25px; padding-right:3px;">
-            Start
-        </button>
-        <div id="clock">00:00 AM</div>
+    <div class="navbar" style="display: flex; align-items: center; background: #c0c0c0; border-top: 2px solid #fff; border-bottom: 2px solid #808080; height: 38px;">
+        <div style="display: flex; align-items: center; flex: 1;">
+            <button id="start-button" onclick="toggleStartMenu()" style="margin: 0;">
+                <img src="desktopimg/start.png" alt="Start Icon" style="width:25px; padding-right:3px;">
+                Start
+            </button>
+            <div style="width:16px;"></div>
+            <div id="taskbar" style="display: flex; align-items: center; gap: 8px; margin-left: 0; height: 100%;"></div>
+        </div>
+        <div id="clock" style="margin-left: auto; margin-right: 12px;">00:00 AM</div>
     </div>
+    <style>
+        .navbar {
+            display: flex;
+            align-items: center;
+            background: #c0c0c0;
+            border-top: 2px solid #fff;
+            border-bottom: 2px solid #808080;
+            height: 38px;
+        }
+        .navbar > div:first-child {
+            display: flex;
+            align-items: center;
+            flex: 1;
+        }
+        #start-button {
+            margin: 0;
+            height: 32px;
+            min-width: 80px;
+            font-family: 'w95', Arial, sans-serif;
+            font-size: 20px;
+            background: #e0e0e0;
+            border: 2px solid #808080;
+            border-radius: 2px;
+            box-shadow: 1px 1px 0 #fff, -1px -1px 0 #808080;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        #taskbar {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-left: 0;
+            height: 100%;
+        }
+        .taskbar-btn {
+            background: #e0e0e0;
+            border: 1px solid #808080;
+            border-radius: 2px;
+            padding: 2px 16px;
+            font-family: 'w95', Arial, sans-serif;
+            font-size: 18px;
+            margin: 0;
+            cursor: pointer;
+            min-width: 70px;
+            height: 32px;
+            box-shadow: 1px 1px 0 #fff, -1px -1px 0 #808080;
+        }
+        .taskbar-btn:active {
+            background: #c0c0c0;
+        }
+        #clock {
+            margin-left: auto;
+            margin-right: 12px;
+            font-family: 'w95', Arial, sans-serif;
+            font-size: 20px;
+            background: none;
+            border: none;
+            border-radius: 0;
+            padding: 0 8px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+        }
+    </style>
 
-    <div class="start-menu" id="startMenu">
+    <div class="start-menu" id="startMenu" style="position: absolute; left: 0; bottom: 42px; margin: 0;">
         <a href="#" onclick="openProjectsExplorer()"><img src="desktopimg/projectsstart.png" alt="Image 2"></a>
         <a href="#" onclick="openModal('contactModal')"><img src="desktopimg/contactstart.png" alt="Image 4"></a>
         <a href="#" onclick="loadFullscreenPage()"><img src="desktopimg/shut.png" alt="Image 1"></a>
