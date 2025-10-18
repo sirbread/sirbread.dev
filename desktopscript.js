@@ -90,6 +90,24 @@ function makeDraggable(icon) {
         document.body.style.userSelect = '';
         window.removeEventListener('mousemove', mouseMove);
         window.removeEventListener('mouseup', mouseUp);
+        // --- Recycle bin drop detection ---
+        const recycleBin = document.querySelector('.recycle-bin');
+        // Only remove if icon is NOT the recycle bin itself
+        if (recycleBin && icon !== recycleBin) {
+            const iconRect = icon.getBoundingClientRect();
+            const binRect = recycleBin.getBoundingClientRect();
+            if (
+                iconRect.right > binRect.left &&
+                iconRect.left < binRect.right &&
+                iconRect.bottom > binRect.top &&
+                iconRect.top < binRect.bottom
+            ) {
+                icon.remove();
+                if (typeof recycledItems !== 'undefined') {
+                    recycledItems.push(icon.querySelector('div')?.textContent || '');
+                }
+            }
+        }
         // Ensure dragging is stopped even if mouseup is missed
         setTimeout(() => { dragging = false; }, 0);
     }

@@ -92,12 +92,25 @@ function handleDragLeave(e) {
 function handleDrop(e) {
     e.preventDefault();
     const projectName = e.dataTransfer.getData('text/plain');
+    const desktopProjectName = e.dataTransfer.getData('desktop-project-icon');
     if (projectName) {
         const explorerItem = findExplorerItemByName(projectName);
         if (explorerItem) {
             explorerItem.style.display = 'none';
             recycledItems.push(projectName);
             updateExplorerStatus();
+        }
+    } else if (desktopProjectName) {
+        // Remove desktop icon
+        const desktopArea = document.getElementById('desktopArea');
+        if (desktopArea) {
+            const icon = Array.from(desktopArea.querySelectorAll('.project-desktop-icon')).find(
+                el => el.querySelector('div')?.textContent === desktopProjectName.replace(/^Project\s+/i, '')
+            );
+            if (icon) {
+                icon.remove();
+                recycledItems.push(desktopProjectName);
+            }
         }
     }
 }
@@ -168,10 +181,6 @@ function createDesktopIcon(projectName, x, y) {
     icon.style.display = 'flex';
     icon.style.flexDirection = 'column';
     icon.style.alignItems = 'center';
-    // Do NOT set draggable attribute; only use custom drag logic
-    icon.removeAttribute('draggable');
-    // Remove any native drag event listeners
-    icon.ondragstart = function(e) { e.preventDefault(); };
     let label = projectName.replace(/^Project\s+/i, '');
     icon.innerHTML = `
         <img src="desktopimg/projectsicon.png" title="${projectName}" style="max-width: 100%; max-height: 60px;">
@@ -181,12 +190,31 @@ function createDesktopIcon(projectName, x, y) {
         openProjectModalByName(projectName);
     };
     desktopArea.appendChild(icon);
-    // Use global makeDraggable from desktopscript.js
+    // Use the same drag logic as desktop icons
     if (typeof makeDraggable === 'function') {
-        // Clean up any previous drag listeners
         if (icon._draggableCleanup) icon._draggableCleanup();
         makeDraggable(icon);
     }
+    // --- Recycle bin drop workaround ---
+    icon.addEventListener('mouseup', function(e) {
+        const recycleBin = document.querySelector('.recycle-bin');
+        if (recycleBin) {
+            const iconRect = icon.getBoundingClientRect();
+            const binRect = recycleBin.getBoundingClientRect();
+            // Check overlap
+            if (
+                iconRect.right > binRect.left &&
+                iconRect.left < binRect.right &&
+                iconRect.bottom > binRect.top &&
+                iconRect.top < binRect.bottom
+            ) {
+                icon.remove();
+                if (typeof recycledItems !== 'undefined') {
+                    recycledItems.push(projectName);
+                }
+            }
+        }
+    });
 }
 
 function openProjectModalByName(name) {
