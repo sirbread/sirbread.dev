@@ -570,18 +570,29 @@
         </div>
     </div>
 
-    <div class="itemIconContainer">
+    <div class="itemIconContainer" id="desktopArea">
         <div class="itemIcon" ondblclick="event.preventDefault(); window.location.href='index.html'">
             <img src="desktopimg/homeicon.png" title="Home">
         </div>
-
         <div class="itemIcon" ondblclick="event.preventDefault(); openProjectsExplorer()">
             <img src="desktopimg/projectsicon.png" title="Projects">
         </div>
-
         <div class="itemIcon" ondblclick="event.preventDefault(); openModal('contactModal')">
             <img src="desktopimg/contacticon.png" title="Contact">
         </div>
+        <style>
+            #desktopArea {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                z-index: 1;
+            }
+            .project-desktop-icon {
+                cursor: pointer;
+            }
+        </style>
     </div>
 
     <div class="itemIcon recycle-bin" data-type="recycle-bin">

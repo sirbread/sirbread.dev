@@ -1,10 +1,8 @@
 .itemIconContainer {
-    position: absolute;
-    /* bottom: 0; */
-    display: flex;
+    position: relative;
     z-index: 9;
-    width: 160px;
-    flex-wrap: wrap;
+    width: 100vw;
+    height: 100vh;
 }
 .itemIcon {
     display: flex;

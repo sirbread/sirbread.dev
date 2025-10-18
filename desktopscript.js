@@ -66,33 +66,19 @@ function snapToGrid(x, y) {
 }
 
 function makeDraggable(icon) {
+    // Remove any previous listeners to prevent sticky drag
+    if (icon._draggableCleanup) icon._draggableCleanup();
     let offsetX = 0, offsetY = 0, startX = 0, startY = 0, dragging = false;
-
-    icon.style.position = 'absolute';
-    icon.addEventListener('mousedown', function(e) {
-        if (e.button !== 0) return;
-        dragging = true;
-        startX = e.clientX;
-        startY = e.clientY;
-        const rect = icon.getBoundingClientRect();
-        offsetX = startX - rect.left;
-        offsetY = startY - rect.top;
-        icon.style.zIndex = 1000;
-        document.body.style.userSelect = 'none';
-    });
-
-    document.addEventListener('mousemove', function(e) {
+    function mouseMove(e) {
         if (!dragging) return;
         let x = e.clientX - offsetX;
         let y = e.clientY - offsetY;
-        // Prevent dragging outside window
         x = Math.max(0, Math.min(window.innerWidth - icon.offsetWidth, x));
         y = Math.max(0, Math.min(window.innerHeight - icon.offsetHeight, y));
         icon.style.left = x + 'px';
         icon.style.top = y + 'px';
-    });
-
-    document.addEventListener('mouseup', function(e) {
+    }
+    function mouseUp(e) {
         if (!dragging) return;
         dragging = false;
         let x = parseInt(icon.style.left, 10) || 0;
@@ -102,7 +88,32 @@ function makeDraggable(icon) {
         icon.style.top = snapped.y + 'px';
         icon.style.zIndex = 9;
         document.body.style.userSelect = '';
-    });
+        window.removeEventListener('mousemove', mouseMove);
+        window.removeEventListener('mouseup', mouseUp);
+        // Ensure dragging is stopped even if mouseup is missed
+        setTimeout(() => { dragging = false; }, 0);
+    }
+    function mouseDown(e) {
+        if (e.button !== 0) return;
+        if (dragging) return; // Prevent sticky drag if already dragging
+        dragging = true;
+        startX = e.clientX;
+        startY = e.clientY;
+        const rect = icon.getBoundingClientRect();
+        offsetX = startX - rect.left;
+        offsetY = startY - rect.top;
+        icon.style.zIndex = 1000;
+        document.body.style.userSelect = 'none';
+        window.addEventListener('mousemove', mouseMove);
+        window.addEventListener('mouseup', mouseUp);
+    }
+    icon.addEventListener('mousedown', mouseDown);
+    // Store cleanup so we can remove listeners if re-initialized
+    icon._draggableCleanup = function() {
+        icon.removeEventListener('mousedown', mouseDown);
+        window.removeEventListener('mousemove', mouseMove);
+        window.removeEventListener('mouseup', mouseUp);
+    };
 }
 
 window.addEventListener('DOMContentLoaded', function() {

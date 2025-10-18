@@ -20,7 +20,25 @@ document.addEventListener('DOMContentLoaded', function() {
         recycleBin.addEventListener('drop', handleDrop);
     }
 
-    // Close button handling is done in modal.js
+    // Desktop drop support
+    const desktopArea = document.getElementById('desktopArea');
+    if (desktopArea) {
+        desktopArea.addEventListener('dragover', function(e) {
+            e.preventDefault();
+        });
+        desktopArea.addEventListener('drop', function(e) {
+            e.preventDefault();
+            const projectName = e.dataTransfer.getData('text/plain');
+            if (projectName) {
+                const explorerItem = findExplorerItemByName(projectName);
+                if (explorerItem) {
+                    explorerItem.style.display = 'none';
+                    createDesktopIcon(projectName, e.clientX, e.clientY);
+                    updateExplorerStatus();
+                }
+            }
+        });
+    }
 });
 
 function handleDragStart(e) {
@@ -131,5 +149,42 @@ function showRecycleBinMessage() {
         modal.querySelector('.close').addEventListener('click', () => {
             modal.remove();
         });
+    }
+}
+
+function createDesktopIcon(projectName, x, y) {
+    const desktopArea = document.getElementById('desktopArea');
+    if (!desktopArea) return;
+    const icon = document.createElement('div');
+    icon.className = 'itemIcon project-desktop-icon';
+    icon.style.position = 'absolute';
+    // Snap to grid on creation
+    const snapped = snapToGrid(x, y);
+    icon.style.left = snapped.x + 'px';
+    icon.style.top = snapped.y + 'px';
+    icon.style.zIndex = 9;
+    icon.style.height = '88px';
+    icon.style.width = '60px';
+    icon.style.display = 'flex';
+    icon.style.flexDirection = 'column';
+    icon.style.alignItems = 'center';
+    // Do NOT set draggable attribute; only use custom drag logic
+    icon.removeAttribute('draggable');
+    // Remove any native drag event listeners
+    icon.ondragstart = function(e) { e.preventDefault(); };
+    let label = projectName.replace(/^Project\s+/i, '');
+    icon.innerHTML = `
+        <img src="desktopimg/projectsicon.png" title="${projectName}" style="max-width: 100%; max-height: 60px;">
+        <div style="font-size: 13px; text-align: center;">${label}</div>
+    `;
+    icon.ondblclick = function() {
+        openProjectModalByName(projectName);
+    };
+    desktopArea.appendChild(icon);
+    // Use global makeDraggable from desktopscript.js
+    if (typeof makeDraggable === 'function') {
+        // Clean up any previous drag listeners
+        if (icon._draggableCleanup) icon._draggableCleanup();
+        makeDraggable(icon);
     }
 }
