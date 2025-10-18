@@ -665,10 +665,22 @@
         }
     </style>
 
-    <div class="start-menu" id="startMenu" style="position: absolute; left: 0; bottom: 42px; margin: 0;">
-        <a href="#" onclick="openProjectsExplorer()"><img src="desktopimg/projectsstart.png" alt="Image 2"></a>
-        <a href="#" onclick="openModal('contactModal')"><img src="desktopimg/contactstart.png" alt="Image 4"></a>
-        <a href="#" onclick="loadFullscreenPage()"><img src="desktopimg/shut.png" alt="Image 1"></a>
+    <div class="start-menu" id="startMenu" style="position: absolute; left: 0; bottom: 38px; margin: 0; display: none; flex-direction: row; box-shadow: 2px 2px 6px #888;">
+    <div class="start-items" style="background: #c0c0c0; display: flex; flex-direction: row; padding: 2px 4px 2px 4px;">
+        <div class="start-sidebar" style="background: #003399; width: 38px; display: flex; align-items: center; justify-content: center;">
+            <span style="writing-mode: vertical-rl; transform: rotate(180deg); color: #fff; font-family: 'w95', Arial, sans-serif; font-weight: bold; font-size: 20px; letter-spacing: 2px;">sirbreads98</span>
+        </div>
+        <div style="display: flex; flex-direction: column; padding-left: 8px;">
+            <a href="#" onclick="openProjectsExplorer()" style="display: flex; align-items: center; margin-bottom: 1px; text-decoration: none; justify-content: flex-start;">
+                <img src="desktopimg/projectsstart.png" alt="Projects" style="width: 110px; height: 52px; object-fit: contain;">
+            </a>
+            <a href="#" onclick="openModal('contactModal')" style="display: flex; align-items: center; margin-bottom: 1px; text-decoration: none; justify-content: flex-start;">
+                <img src="desktopimg/contactstart.png" alt="Contact" style="width: 110px; height: 52px; object-fit: contain;">
+            </a>
+            <a href="#" onclick="loadFullscreenPage()" style="display: flex; align-items: center; text-decoration: none; justify-content: flex-start;">
+                <img src="desktopimg/shut.png" alt="Shutdown" style="width: 110px; height: 52px; object-fit: contain;">
+            </a>
+        </div>
     </div>
     <!-- Contact Modal (draggable) -->
     <div id="contactModal" class="modal" style="display:none;">
