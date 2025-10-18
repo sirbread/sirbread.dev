@@ -181,10 +181,12 @@ function createDesktopIcon(projectName, x, y) {
     icon.style.display = 'flex';
     icon.style.flexDirection = 'column';
     icon.style.alignItems = 'center';
-    let label = projectName.replace(/^Project\s+/i, '');
+    // Use project-specific thumbnail if available
+    const safeName = projectName.replace(/[^a-zA-Z0-9\-]/g, '-').toLowerCase();
+    const thumbPath = `desktopimg/projectthumbnails/${safeName}.png`;
     icon.innerHTML = `
-        <img src="desktopimg/projectsicon.png" title="${projectName}" style="max-width: 100%; max-height: 60px;">
-        <div style="font-size: 13px; text-align: center;">${label}</div>
+        <img src="${thumbPath}" onerror="this.onerror=null;this.src='desktopimg/projectsiconnotext.png';" title="${projectName}" style="max-width: 100%; max-height: 60px;">
+        <div style="font-size: 16px; color: #fff; text-align: center;">${projectName}</div>
     `;
     icon.ondblclick = function() {
         openProjectModalByName(projectName);
@@ -218,10 +220,23 @@ function createDesktopIcon(projectName, x, y) {
 }
 
 function openProjectModalByName(name) {
-    // Assumes modals are named projectNModaldrag
-    const match = name.match(/Project\s*(\d+)/i);
-    if (match) {
-        const num = match[1];
+    // Map project names to modal numbers
+    const projectNameToNum = {
+        'walachat': 1,
+        'lineer': 2,
+        'some-pennies-saved': 3,
+        'living-room': 4,
+        'pythcasso': 5,
+        'music-visualizer': 6,
+        'be-kind-please-rewind': 7,
+        'greed': 8,
+        'termegle': 9,
+        'spellscript': 10,
+        'sink': 11,
+        'breadbot': 12
+    };
+    const num = projectNameToNum[name.trim()];
+    if (num) {
         const modal = document.getElementById(`project${num}Modaldrag`);
         if (modal) {
             modal.style.display = 'block';
