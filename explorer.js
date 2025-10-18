@@ -188,3 +188,24 @@ function createDesktopIcon(projectName, x, y) {
         makeDraggable(icon);
     }
 }
+
+function openProjectModalByName(name) {
+    // Assumes modals are named projectNModaldrag
+    const match = name.match(/Project\s*(\d+)/i);
+    if (match) {
+        const num = match[1];
+        const modal = document.getElementById(`project${num}Modaldrag`);
+        if (modal) {
+            modal.style.display = 'block';
+            modal.style.position = 'absolute';
+            modal.style.left = '100px';
+            modal.style.top = '100px';
+            modal.style.width = '420px';
+            modal.style.height = '300px';
+            modal.style.zIndex = 9999; // bring to front
+            if (typeof dragElement === 'function') {
+                dragElement(modal);
+            }
+        }
+    }
+}

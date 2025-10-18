@@ -83,6 +83,7 @@
                 el.style.top = '100px';
                 el.style.width = '420px';
                 el.style.height = '300px';
+                el.style.zIndex = 9999; // bring to front
                 if (typeof dragElement === 'function') {
                     dragElement(el);
                 }
@@ -212,8 +213,7 @@
                 <div class="toolbar-separator"></div>
                 <div class="toolbar-group">
                     <button class="toolbar-btn" title="Cut">
-                        <img src="desktopimg/placeholder.png" alt="Cut">
-                    </button>
+                        <img src="
                     <button class="toolbar-btn" title="Copy">
                         <img src="desktopimg/placeholder.png" alt="Copy">
                     </button>
