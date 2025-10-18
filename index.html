@@ -571,15 +571,15 @@
     </div>
 
     <div class="itemIconContainer">
-        <div class="itemIcon" ondblclick="window.location.href='index.html'">
+        <div class="itemIcon" ondblclick="event.preventDefault(); window.location.href='index.html'">
             <img src="desktopimg/homeicon.png" title="Home">
         </div>
 
-        <div class="itemIcon" ondblclick="openProjectsExplorer()">
+        <div class="itemIcon" ondblclick="event.preventDefault(); openProjectsExplorer()">
             <img src="desktopimg/projectsicon.png" title="Projects">
         </div>
 
-        <div class="itemIcon" ondblclick="window.location.href='contactpage/index.html'">
+        <div class="itemIcon" ondblclick="event.preventDefault(); window.location.href='contactpage/index.html'">
             <img src="desktopimg/contacticon.png" title="Contact">
         </div>
     </div>
