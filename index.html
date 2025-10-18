@@ -59,10 +59,15 @@
         }
 
         function openProjectsExplorer() {
+            // Position the explorer window before displaying it
+            var el = document.getElementById('projectsExplorerdrag');
+            if (el) {
+                el.style.top = '50px';
+                el.style.left = '50px';
+            }
             openModal('projectsExplorer');
             // Make it draggable after opening
             setTimeout(function() {
-                var el = document.getElementById('projectsExplorerdrag');
                 if (el && typeof dragElement === 'function') {
                     dragElement(el);
                 }
@@ -566,22 +571,16 @@
     </div>
 
     <div class="itemIconContainer">
-        <div class="itemIcon">
-            <a href="index.html">
-                <img src="desktopimg/homeicon.png" title="Home">
-            </a>
+        <div class="itemIcon" ondblclick="window.location.href='index.html'">
+            <img src="desktopimg/homeicon.png" title="Home">
         </div>
 
-        <div class="itemIcon">
-            <a href="#" onclick="openProjectsExplorer()">
-                <img src="desktopimg/projectsicon.png" title="Projects">
-            </a>
+        <div class="itemIcon" ondblclick="openProjectsExplorer()">
+            <img src="desktopimg/projectsicon.png" title="Projects">
         </div>
 
-        <div class="itemIcon">
-            <a href="contactpage/index.html">
-                <img src="desktopimg/contacticon.png" title="Contact">
-            </a>
+        <div class="itemIcon" ondblclick="window.location.href='contactpage/index.html'">
+            <img src="desktopimg/contacticon.png" title="Contact">
         </div>
     </div>
 

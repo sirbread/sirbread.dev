@@ -20,16 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
         recycleBin.addEventListener('drop', handleDrop);
     }
 
-    document.querySelectorAll('.close').forEach(closeBtn => {
-        closeBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            const modalContent = this.closest('.modal-content');
-            if (modalContent) {
-                modalContent.style.display = 'none';
-            }
-        });
-    });
+    // Close button handling is done in modal.js
 });
 
 function handleDragStart(e) {

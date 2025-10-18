@@ -15,17 +15,7 @@
             document.getElementById(modalId).style.display = "none";
         }
 
-        // Add click handlers for all close buttons
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.close').forEach(function(closeBtn) {
-                closeBtn.addEventListener('click', function() {
-                    var projectWindow = this.closest('.modal-content');
-                    if (projectWindow) {
-                        projectWindow.style.display = 'none';
-                    }
-                });
-            });
-        });
+        // Close button handlers are handled individually by each modal
 
 
 
