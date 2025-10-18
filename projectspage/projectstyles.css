@@ -1,6 +1,6 @@
 @font-face {
-    font-family: 'w95'; /* The name you want to give to the font */
-    src: url('../font/w95fa.woff2') format('woff2'), /* Font formats for cross-browser support */
+    font-family: 'w95';
+    src: url('../font/w95fa.woff2') format('woff2'),
          url('../font/w95fa.woff') format('woff');
     
     font-weight: normal;
@@ -16,6 +16,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    overflow: hidden;
 }
 
 
@@ -52,5 +53,299 @@ body {
   
 .itemIcon :hover {
     background-color: #6db2b1;
+}
+
+.modal-content.project-window {
+    min-width: 200px;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-window .media-container {
+    padding: 0;
+}
+
+.media.project-banner {
+    width: 100%;
+    height: 40%;
+    object-fit: cover;
+    border: 2px solid black;
+    box-sizing: border-box;
+}
+
+.project-window .modal-body-text p {
+    margin-top: 10px;
+    margin-bottom: 8px;
+}
+
+.project-window a {
+    color: #000080;
+    text-decoration: none;
+}
+
+.project-window a:hover {
+    text-decoration: underline;
+}
+
+.explorer-window {
+    width: 800px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    background-color: #c0c0c0;
+}
+
+.explorer-menu {
+    display: flex;
+    background-color: #c0c0c0;
+    border-bottom: 1px solid #808080;
+    padding: 2px 0;
+    height: 18px;
+}
+
+.menu-item {
+    padding: 3px 8px;
+    margin-right: 2px;
+    font-family: 'w95';
+    font-size: 14px;
+    cursor: default;
+}
+
+.menu-item:hover {
+    background-color: #000080;
+    color: #ffffff;
+}
+
+.explorer-toolbar {
+    display: flex;
+    align-items: center;
+    background-color: #c0c0c0;
+    border-bottom: 1px solid #808080;
+    padding: 3px 4px;
+    height: 26px;
+}
+
+.toolbar-group {
+    display: flex;
+    gap: 1px;
+}
+
+.toolbar-separator {
+    width: 1px;
+    height: 22px;
+    background-color: #808080;
+    border-right: 1px solid #ffffff;
+    margin: 0 4px;
+}
+
+.toolbar-btn {
+    width: 24px;
+    height: 22px;
+    padding: 1px;
+    background-color: #c0c0c0;
+    border: 1px solid #c0c0c0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toolbar-btn:hover {
+    border-top: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;
+    border-right: 1px solid #808080;
+    border-bottom: 1px solid #808080;
+}
+
+.toolbar-btn:active {
+    border: 1px solid #808080;
+    padding: 2px 0 0 2px;
+}
+
+.toolbar-btn img {
+    width: 16px;
+    height: 16px;
+}
+
+.views-btn {
+    width: auto;
+    padding: 1px 4px;
+    display: flex;
+    gap: 4px;
+}
+
+.dropdown-arrow {
+    font-size: 8px;
+    margin-top: 2px;
+}
+
+.address-bar {
+    display: flex;
+    align-items: center;
+    background-color: #c0c0c0;
+    padding: 5px;
+    border-bottom: 1px solid #808080;
+    height: 23px;
+}
+
+.address-label {
+    font-family: 'w95';
+    font-size: 14px;
+    margin-right: 8px;
+}
+
+.address-input {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px inset #808080;
+    padding: 3px 4px;
+    height: 24px;
+}
+
+.address-icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 4px;
+}
+
+.address-text {
+    font-family: 'w95';
+    font-size: 14px;
+    flex: 1;
+}
+
+.address-dropdown {
+    width: 16px;
+    background: #c0c0c0;
+    border: 1px solid #808080;
+    font-size: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.explorer-body {
+    flex: 1;
+    display: flex;
+    background-color: #ffffff;
+    border-top: 1px solid #808080;
+}
+
+.explorer-sidebar {
+    width: 180px;
+    background-color: #c0c0c0;
+    border-right: 2px solid #808080;
+    padding: 4px 2px;
+    overflow-y: auto;
+}
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    padding: 3px 4px;
+    gap: 6px;
+    font-family: 'w95';
+    font-size: 14px;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.sidebar-item img {
+    width: 16px;
+    height: 16px;
+}
+
+.sidebar-item:hover {
+    border: 1px dotted #000000;
+}
+
+.sidebar-item.selected {
+    background-color: #000080;
+    color: #ffffff;
+}
+
+.sidebar-item.tree-item {
+    padding-left: 20px;
+}
+
+.explorer-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+}
+
+.main-header {
+    display: flex;
+    align-items: center;
+    height: 22px;
+    background-color: #c0c0c0;
+    border-bottom: 1px solid #808080;
+    font-family: 'w95';
+    font-size: 14px;
+    user-select: none;
+}
+
+.col-icon { width: 28px; padding: 3px 4px; }
+.col-name { width: 200px; padding: 3px 4px; border-left: 1px solid #ffffff; border-right: 1px solid #808080; }
+.col-size { width: 70px; padding: 3px 4px; border-left: 1px solid #ffffff; border-right: 1px solid #808080; }
+.col-type { width: 100px; padding: 3px 4px; border-left: 1px solid #ffffff; border-right: 1px solid #808080; }
+.col-modified { width: 140px; padding: 3px 4px; border-left: 1px solid #ffffff; border-right: 1px solid #808080; }
+
+.explorer-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 3px;
+}
+
+.explorer-item {
+    display: flex;
+    align-items: center;
+    height: 22px;
+    font-family: 'w95';
+    font-size: 14px;
+    border: 1px solid transparent;
+    cursor: move;
+}
+
+.explorer-item:hover {
+    border: 1px dotted #000000;
+}
+
+.explorer-item.selected {
+    background-color: #000080;
+    color: #ffffff;
+}
+
+.explorer-item[data-dragging="true"] {
+    opacity: 0.4;
+}
+
+.item-icon { width: 28px; padding: 0 4px; }
+.item-icon img { width: 18px; height: 18px; }
+.item-name { width: 200px; padding: 0 4px; }
+.item-size { width: 70px; padding: 0 4px; }
+.item-type { width: 100px; padding: 0 4px; }
+.item-modified { width: 140px; padding: 0 4px; }
+
+.explorer-status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 24px;
+    background-color: #c0c0c0;
+    border-top: 1px solid #ffffff;
+    padding: 0 6px;
+    font-family: 'w95';
+    font-size: 14px;
+}
+
+.project-window .modal-body {
+    flex: 1 1 auto;
+    overflow: hidden;
 }
 

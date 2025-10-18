@@ -14,23 +14,16 @@
     margin-left: 20px;
   }
 
-.trashIconContainer {
-    position: absolute;
-    right: 0;
-    /* bottom: 0; */
-    display: flex;
+.recycle-bin {
+    position: absolute !important;
+    right: 20px !important;
+    top: 20px !important;
+    left: auto !important;
+    margin: 0 !important;
     z-index: 9;
-    margin-right: 30px;
-
-    width: 80px;
-    flex-wrap: wrap;
-}
-.trashIcon {
     display: flex;
     height: 88px;
     width: 60px;
-    margin-top: 20px;
-    margin-left: 10px;
 }
 
 .itemIcon :hover {
@@ -38,5 +31,9 @@
 }
 
 .trashIcon :hover {
+    background-color: #6db2b1;
+}
+
+.recycle-bin:hover {
     background-color: #6db2b1;
 }

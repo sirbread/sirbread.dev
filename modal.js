@@ -1,6 +1,9 @@
         setTimeout(function () {
-            openModal('firstModal');
-        }, 3000);
+              // Only open if the element exists on this page
+              if (document.getElementById('firstModal')) {
+                openModal('firstModal');
+              }
+            }, 3000);
 
         function openModal(modalId) {
             document.getElementById(modalId).style.display = "block";
@@ -12,17 +15,31 @@
             document.getElementById(modalId).style.display = "none";
         }
 
+        // Add click handlers for all close buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.close').forEach(function(closeBtn) {
+                closeBtn.addEventListener('click', function() {
+                    var projectWindow = this.closest('.modal-content');
+                    if (projectWindow) {
+                        projectWindow.style.display = 'none';
+                    }
+                });
+            });
+        });
 
 
 
-        dragElement(document.getElementById('firstModaldrag'));
-        dragElement(document.getElementById('secondModaldrag'));
-        dragElement(document.getElementById('thirdModaldrag'));
-        dragElement(document.getElementById('fourthModaldrag'));
+        // Safely initialize known modal draggables if present on the page
+        ['firstModaldrag','secondModaldrag','thirdModaldrag','fourthModaldrag']
+          .forEach(function(id){
+            var el = document.getElementById(id);
+            if (el) dragElement(el);
+          });
 
 
 
         function dragElement(elmnt) {
+          if (!elmnt) return; // Guard against null elements
           var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
           if (document.getElementById(elmnt.id + "header")) {
             // if present, the header is where you move the DIV from:
