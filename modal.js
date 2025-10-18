@@ -9,7 +9,12 @@
           var modal = document.getElementById(modalId);
           if (modal) {
             modal.style.display = "block";
-            modal.style.zIndex = getMaxZ() + 1;
+            // Ensure contact modal is always above the start menu
+            if (modalId === 'contactModal') {
+              modal.style.zIndex = 9999;
+            } else {
+              modal.style.zIndex = getMaxZ() + 1;
+            }
             updateTaskbar();
           }
         }
@@ -62,15 +67,23 @@ function updateTaskbar() {
 document.addEventListener('DOMContentLoaded', updateTaskbar);
 
         document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.close').forEach(function(closeBtn) {
-                closeBtn.addEventListener('click', function() {
-                    // For project windows and other modals without specific handlers
-                    var modalContent = this.closest('.modal-content');
-                    if (modalContent) {
-                        modalContent.style.display = 'none';
-                    }
-                });
-            });
+      document.querySelectorAll('.close').forEach(function(closeBtn) {
+        closeBtn.addEventListener('click', function() {
+          // Always hide the parent .modal container
+          var modal = this.closest('.modal');
+          if (!modal) {
+            // If not found, try to find the closest .modal-content and then its parent .modal
+            var modalContent = this.closest('.modal-content');
+            if (modalContent && modalContent.parentElement.classList.contains('modal')) {
+              modal = modalContent.parentElement;
+            }
+          }
+          if (modal) {
+            modal.style.display = 'none';
+            updateTaskbar();
+          }
+        });
+      });
         });
 
 
