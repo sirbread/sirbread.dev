@@ -9,8 +9,8 @@
           var modal = document.getElementById(modalId);
           if (modal) {
             modal.style.display = "block";
-            // Ensure contact modal is always above the start menu
-            if (modalId === 'contactModal') {
+            // Ensure contact and project modals are always above the start menu
+            if (modalId === 'contactModal' || modalId.toLowerCase().includes('project')) {
               modal.style.zIndex = 9999;
             } else {
               modal.style.zIndex = getMaxZ() + 1;
