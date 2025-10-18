@@ -2,4 +2,5 @@
 - make desktop icons draggable anywhrere
 - make project files movable to desktop
 - make better start menu
+- make apps appear on taskbar
 - ~~make explorer spawn more up~~

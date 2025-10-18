@@ -15,7 +15,17 @@
             document.getElementById(modalId).style.display = "none";
         }
 
-        // Close button handlers are handled individually by each modal
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.close').forEach(function(closeBtn) {
+                closeBtn.addEventListener('click', function() {
+                    // For project windows and other modals without specific handlers
+                    var modalContent = this.closest('.modal-content');
+                    if (modalContent) {
+                        modalContent.style.display = 'none';
+                    }
+                });
+            });
+        });
 
 
 
